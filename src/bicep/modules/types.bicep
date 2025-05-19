@@ -9,8 +9,16 @@ type StorageAccount = {
   kind: ('StorageV2' | 'BlobStorage' | 'BlockBlobStorage' | 'FileStorage')
   tags: object
   containers: StorageAccountContainer[]
+  roleAssignments: RoleAssignment[]
 }
 
 type StorageAccountContainer = {
   name: string
+}
+
+// MARK: Role Assignment
+type RoleAssignment = {
+  principalId: string
+  principalType: ('Device' | 'ForeignGroup' | 'Group' | 'ServicePrincipal' | 'User')
+  roleDefinitionId: string
 }

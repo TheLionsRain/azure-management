@@ -34,4 +34,11 @@ param storageAccountTerraform = {
       name: 'c-tfstate-homelab-helheim'
     }
   ]
+  roleAssignments: [
+    {
+      principalId: 'a176ebb0-c01d-473a-8205-2370942a9e9e' // sp-gh-homelab
+      principalType: 'ServicePrincipal'
+      roleDefinitionId: 'ba92f5b4-2d11-453d-a403-e96b0029c9fe' // Storage Blob Data Contributor
+    }
+  ]
 }

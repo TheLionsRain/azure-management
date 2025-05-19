@@ -32,6 +32,19 @@ resource saContainers 'Microsoft.Storage/storageAccounts/blobServices/containers
   }
 ]
 
+// MARK: Role Assignments
+resource roleAssignments 'Microsoft.Authorization/roleAssignments@2022-04-01' = [
+  for roleAssignment in storageAccount.roleAssignments: {
+    scope: sa
+    name: guid(roleAssignment.roleDefinitionId, roleAssignment.principalId, sa.name)
+    properties: {
+      principalId: roleAssignment.principalId
+      principalType: roleAssignment.principalType
+      roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', roleAssignment.roleDefinitionId)
+    }
+  }
+]
+
 // MARK: Outputs
 output id string = sa.id
 output name string = sa.name
