@@ -1,0 +1,24 @@
+---
+name: CD - Bicep
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+      - src/bicep/**
+
+jobs:
+  deploy:
+    name: Deploy Bicep
+    uses: TheLionsRain/reusable-workflows/.github/workflows/deploy-bicep.yml@deploy-bicep-v1.0.0
+    with:
+      BICEP_FILE: src/bicep/main.bicep
+      ENVIRONMENT: prd
+      LOCATION: northeurope
+      BICEP_PARAMETERS_FILE: src/bicep/params/prd.bicepparam
+      SCOPE: subscription
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
