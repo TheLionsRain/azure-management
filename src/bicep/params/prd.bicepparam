@@ -19,8 +19,6 @@ param tags = {
 
 // MARK: Storage Accounts
 param storageAccountResourceGroupName = storageResourceGroupName
-
-// MARK: Storage Account - Terraform
 param storageAccountTerraform = {
   name: storageAccountTerraformName
   location: location
@@ -41,4 +39,17 @@ param storageAccountTerraform = {
       roleDefinitionId: 'ba92f5b4-2d11-453d-a403-e96b0029c9fe' // Storage Blob Data Contributor
     }
   ]
+}
+
+
+// MARK: Container Registries
+param containerRegistryResourceGroupName = 'rg-management-registries-${locationShortName}'
+param containerRegistryMercurius = {
+  name: 'mercuriusaalst'
+  location: location
+  sku: {
+    name: 'Standard'
+  }
+  tags: tags
+  roleAssignments: []
 }

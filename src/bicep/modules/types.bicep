@@ -22,3 +22,15 @@ type RoleAssignment = {
   principalType: ('Device' | 'ForeignGroup' | 'Group' | 'ServicePrincipal' | 'User')
   roleDefinitionId: string
 }
+
+// MARK: Container Registry
+@export()
+type ContainerRegistry = {
+  name: string
+  location: string
+  sku: {
+    name: ('Basic' | 'Standard' | 'Premium')
+  }
+  tags: object
+  roleAssignments: RoleAssignment[]
+}
