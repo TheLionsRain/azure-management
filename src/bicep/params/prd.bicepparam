@@ -50,6 +50,15 @@ param containerRegistryMercurius = {
   sku: {
     name: 'Standard'
   }
+  properties: {
+    anonymousPullEnabled: true
+  }
   tags: tags
-  roleAssignments: []
+  roleAssignments: [
+    {
+      principalId: '133659da-2987-49ac-adfb-305b934b45d6' // sp-gh-mercurius-aalst-back-end
+      principalType: 'ServicePrincipal'
+      roleDefinitionId: '8311e382-0749-4cb8-b61a-304f252e45ec' // AcrPush
+    }
+  ]
 }

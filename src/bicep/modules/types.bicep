@@ -31,6 +31,9 @@ type ContainerRegistry = {
   sku: {
     name: ('Basic' | 'Standard' | 'Premium')
   }
+  properties: {
+    anonymousPullEnabled: bool?
+  }
   tags: object
   roleAssignments: RoleAssignment[]
 }

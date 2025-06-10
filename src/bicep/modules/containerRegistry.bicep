@@ -14,6 +14,9 @@ resource cr 'Microsoft.ContainerRegistry/registries@2025-04-01' = {
   sku: {
     name: containerRegistry.sku.name
   }
+  properties: {
+    anonymousPullEnabled: containerRegistry.properties.?anonymousPullEnabled
+  }
   tags: containerRegistry.tags
 }
 
